@@ -38,7 +38,7 @@ Faz o bind no Html, renderizando o código Html dentro da String em Html puro:
 Renderiza o valor dentro da variável apenas uma vez, deixa o dado imutável:
 
     <div v-once>{{ dados }}</div>
-    _____________________________
+    _________________________
     ...
     data() {
       return {
@@ -77,7 +77,7 @@ Testa uma condição para renderizar elementos no Html, se a condição for fals
 
     <h1 v-if="dados">Apresenta este texto se dados for true, senão não renderiza o h1 no DOM</h1>
     <h1 v-else="!dados">Apresenta este texto somente se dados for false</h1>
-    ________________________
+    _____________________________________
     ...
     data() {
       return {
@@ -110,3 +110,34 @@ Faz o bind de dados conforme a variável é preenchida, utilizada em elementos d
         dados: ''
       }
     }
+    
+## v-for
+Faz a iteração em arrays e objetos:
+
+    <ol><li v-for="dado in dados">{{ dados }}</li></ol>
+    
+    ________________________
+    ...
+    data() {
+      return {
+        dados: ['01', '02', '03', '04']
+      }
+    }
+
+
+## ref
+Utilizada para interagir com elementos do DOM:
+    
+    <h1 ref="dados">Vue</h1>
+    ________________________
+    ...
+    data() {
+      return {
+        ...
+      }
+    },
+    mounted() {
+       console.log(this.$refs.dados);                                               <- retorna <h1>Vue</h1>
+    }
+    
+        
