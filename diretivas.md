@@ -50,7 +50,7 @@ Renderiza o valor dentro da variável apenas uma vez, deixa o dado imutável:
 Faz o bind em qualquer atributo Html válido:
 
     <a v-bind:href="link">Site Vue.js</a>
-    <a :href="link">Site Vue.js</a>                                                       <- shorthand
+    <a :href="link">Site Vue.js</a>                                                    <- shorthand
     _____________________________________
     ...
     data() {
@@ -63,7 +63,7 @@ Faz o bind em qualquer atributo Html válido:
 Faz a captura de eventos javascript:
 
     <button v-on:click="alo">Dispara a função</button>
-    <button @click="link">Dispara a função</button>                                       <- shorthand
+    <button @click="link">Dispara a função</button>                                    <- shorthand
     _____________________________________
     ...
     data() {
@@ -101,7 +101,7 @@ Renderiza elementos no Html conforme a condição, porém renderiza os elementos
 ## v-model
 Faz o bind de dados conforme a variável é preenchida, utilizada em elementos de formulários como inputs, textarea, etc...:
 
-    <input type="text" v-model="dados">                                                   <- Não pode ter atributo value
+    <input type="text" v-model="dados">                                                <- Não pode ter atributo value
     <h1>{{ dados }}</h1>
     ________________________
     ...
