@@ -1,5 +1,5 @@
 ## Interpolação mustache
-Faz o bind no Html, renderizando os dados dentro do Html:
+Faz o bind no Html, renderizando os dados dentro do Html, sendo a única maneira de se utilizar filtros:
 
     <h1>{{ dados }}</h1>
     ________________________
