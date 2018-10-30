@@ -140,4 +140,19 @@ Utilizada para interagir com elementos do DOM:
        console.log(this.$refs.dados);                                               <- retorna <h1>Vue</h1>
     }
     
-        
+## v-pre
+Ignore a compilação desse elemento e de todos os seus filhos:
+
+    <span v-pre>{{ Isto não será compilado }}</span>
+    
+## v-cloak
+Esta diretiva permanecerá no elemento até que a instância Vue associada termine a compilação. Combinada com regras CSS, essa diretiva pode ser usada para ocultar interpolações Mustache não compiladas até que a instância do Vue esteja pronta:
+
+    [v-cloak] {
+        display: none;
+    }
+    ________________________
+    <div v-cloak>
+        {{ message }}
+    </div>
+    
