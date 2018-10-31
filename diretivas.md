@@ -155,4 +155,3 @@ Esta diretiva permanecerá no elemento até que a instância Vue associada termi
     <div v-cloak>
         {{ message }}
     </div>
-    
