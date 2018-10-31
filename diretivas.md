@@ -141,7 +141,7 @@ Utilizada para interagir com elementos do DOM:
     }
     
 ## v-pre
-Ignore a compilação desse elemento e de todos os seus filhos:
+Ignora a compilação desse elemento e de todos os seus filhos:
 
     <span v-pre>{{ Isto não será compilado }}</span>
     
