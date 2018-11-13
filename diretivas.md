@@ -84,7 +84,7 @@ Renderiza elementos no Html conforme a condição, porém renderiza os elementos
     ...
     data() {
       return {
-        dados: 'false'
+        dados: true'
       }
     }
     
