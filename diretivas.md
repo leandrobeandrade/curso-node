@@ -63,28 +63,18 @@ Faz o bind em qualquer atributo Html válido:
 Faz a captura de eventos javascript:
 
     <button v-on:click="alo">Dispara a função</button>
-    <button @click="link">Dispara a função</button>                                    <- shorthand
+    <button @click="alo">Dispara a função</button>                                     <- shorthand
     _____________________________________
     ...
     data() {
-      return {
-        link: 'https://vuejs.org/'
-      }
-    } 
-    
-## v-if
-Testa uma condição para renderizar elementos no Html, se a condição for falsa os elementos não são carregados no DOM:
+      ...
+    },
+    methods: {
+        alo() {
+            alert("Alô Mundo Vue.js!")
+        }
+    }
 
-    <h1 v-if="dados">Apresenta este texto se dados for true, senão não renderiza o h1 no DOM</h1>
-    <h1 v-else="!dados">Apresenta este texto somente se dados for false</h1>
-    _____________________________________
-    ...
-    data() {
-      return {
-        dados: 'true'
-      }
-    } 
-    
 ## v-show
 Renderiza elementos no Html conforme a condição, porém renderiza os elementos no DOM e insere um display none:
 
@@ -97,6 +87,31 @@ Renderiza elementos no Html conforme a condição, porém renderiza os elementos
         dados: 'false'
       }
     }
+    
+## v-if
+Testa uma condição para renderizar elementos no Html, se a condição for falsa os elementos não são carregados no DOM:
+
+    <h1 v-if="dados">Apresenta este texto se dados for true, senão não renderiza o h1 no DOM</h1>
+    _____________________________________
+    ...
+    data() {
+      return {
+        dados: 'true'
+      }
+    }
+    
+## v-else
+Testa uma condição para renderizar elementos no Html, se a condição if for falsa os elementos serão carregados os dados do else:
+
+    <h1 v-if="dados">Apresenta este texto se dados for true, senão não renderiza o h1 no DOM</h1>
+    <h1 v-else>Apresenta este texto somente se dados for false</h1>
+    _____________________________________
+    ...
+    data() {
+      return {
+        dados: 'false'
+      }
+    } 
     
 ## v-model
 Faz o bind de dados conforme a variável é preenchida, utilizada em elementos de formulários como inputs, textarea, etc...:
@@ -123,7 +138,6 @@ Faz a iteração em arrays e objetos:
         dados: ['01', '02', '03', '04']
       }
     }
-
 
 ## ref
 Utilizada para interagir com elementos do DOM:
