@@ -42,7 +42,7 @@ Renderiza uma classe baseada no retorno do atributo data().
       }
     }
 
-## :class="[ativo, erro]"
+## :class="[ativo, erro]" 
 Renderiza diversas classes passadas por meio de um array:
 
     <button :class="[estaAtivo, temErro]">Editar</button>
