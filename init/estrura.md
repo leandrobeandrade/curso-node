@@ -18,6 +18,6 @@
 
 >>:page_facing_up: |_ main.js -> Instância principal na aplicação
   
->:file_folder: |_ static -> Pasta com arquivos para elemtnos estáticos da aplicação
+>:file_folder: |_ static -> Pasta com arquivos para elemetnos estáticos da aplicação
 
 >:file_folder: |_ test -> Pasta com arquivos para testes unitários
