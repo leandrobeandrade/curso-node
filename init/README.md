@@ -2,13 +2,13 @@
 
 
 
-:file_folder: :arrow_right: Projeto
+:file_folder: Projeto
 
->:file_folder: :arrow_right: build -> Pasta com arquivos de configuração do webpack
+>:file_folder: build :arrow_right: Pasta com arquivos de configuração do webpack
 
->:file_folder: :arrow_right: config -> Pasta com arquivos de configuração de variáveis de desenvolvimento
+>:file_folder: :arrow_right: config :arrow_right: Pasta com arquivos de configuração de variáveis de desenvolvimento
 
->:file_folder: :arrow_right: node_modules -> Pasta com arquivos das dependências do projeto
+>:file_folder: :arrow_right: node_modules :arrow_right: Pasta com arquivos das dependências do projeto
 
 >:file_folder: :arrow_right: src -> Pasta com arquivos para desenvolvimento
 
