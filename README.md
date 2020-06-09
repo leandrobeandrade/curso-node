@@ -23,4 +23,4 @@ link do curso: https://www.udemy.com/course/curso-completo-do-desenvolvedor-node
 - Possuir Mysql instalado na máquina
 - Possuir Mongo instalado na máquina
 
-![] (https://github.com/leandrobeandrade/curso-node/blob/master/scream.png)
+![](https://github.com/leandrobeandrade/curso-node/blob/master/scream.png)

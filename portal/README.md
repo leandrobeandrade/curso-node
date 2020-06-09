@@ -25,7 +25,7 @@ Projeto simples simulando um portal de notícias através da Interface da aplica
 
 - Possuir Mysql instalado na máquina
 
-![] (https://github.com/leandrobeandrade/curso-node/blob/master/portal/home.png)
-![] (https://github.com/leandrobeandrade/curso-node/blob/master/portal/news.png)
-![] (https://github.com/leandrobeandrade/curso-node/blob/master/portal/new.png)
-![] (https://github.com/leandrobeandrade/curso-node/blob/master/portal/cad.png)
+![](https://github.com/leandrobeandrade/curso-node/blob/master/portal/home.png)
+![](https://github.com/leandrobeandrade/curso-node/blob/master/portal/news.png)
+![](https://github.com/leandrobeandrade/curso-node/blob/master/portal/new.png)
+![](https://github.com/leandrobeandrade/curso-node/blob/master/portal/cad.png)
