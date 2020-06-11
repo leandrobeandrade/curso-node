@@ -1,21 +1,21 @@
 body {
-    background-color: #444;
-    background: url('../images/login-bg.jpg');  
+    background: url('../images/bg.png');
+    height: 100vh;
 }
 
-.form-signin input[type="text"] {
+form input[type="text"] {
     margin-bottom: 5px;
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
 }
 
-.form-signin input[type="password"] {
+form input[type="password"] {
     margin-bottom: 10px;
     border-top-left-radius: 0;
     border-top-right-radius: 0;
 }
 
-.form-signin .form-control {
+form .form-control {
     position: relative;
     font-size: 16px;
     font-family: 'Open Sans', Arial, Helvetica, sans-serif;
@@ -38,21 +38,21 @@ body {
 }
 .panel {
     margin-bottom: 20px;
-    background-color: rgba(255, 255, 255, 0.75);
-    border: 1px solid transparent;
+    background-color: #FFF;
+    border: 2px solid #000;
     border-radius: 4px;
     -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
     box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
 }
 
-.linha_usuario{
+.linha_usuario {
     display: block;
-    margin-top:10px;
-    padding:5px;
+    margin-top: 10px;
+    padding: 5px;
 }
 
-.linha_usuario img{
-    margin-right:5px;
+.linha_usuario img {
+    margin-right: 5px;
     margin-top:-7px;
 }
 
@@ -60,42 +60,46 @@ img {
     vertical-align: middle;
 }
 
-.conversa{
-	margin-top:70px;
+.conversa {
+	margin-top: 70px;
 	margin-bottom: 70px;
 }
 
-.participantes{
-	margin-top:70px;
+.participantes {
+	margin-top: 70px;
 	margin-bottom: 70px;
 }
 
-.participante{
-	display:block;
-	margin-bottom:15px;
+.participante {
+	display: block;
+    margin-bottom: 15px;
+    padding: 15px;
+    border-radius: 4px;
+    background-color: #FFF;
 }
 
-.participante img{
-	margin-top:-10px;
+.participante img {
+	margin-top: -10px;
 }
 
-.dialogo{
-	width:100%;
-	height:auto;
-	margin-bottom:15px;
-	padding:10px;
-	background:#D8F0FE;
+.dialogo {
+	width: 100%;
+	height: auto;
+	margin-bottom: 15px;
+	padding: 10px;
+    background:#FFF;
+    border-radius: 4px;
 }
 
-.dialogo h4{
-	font-size:15px;
+.dialogo h4 {
+	font-size: 15px;
 	font-weight: bold;
 	color:#8B7777;
 }
 
-.dialogo p{
-	font-size:12px;
-	padding-left:15px;
+.dialogo p {
+	font-size: 12px;
+	padding-left: 15px;
 	color:#8B7777;
 }
 
@@ -105,4 +109,23 @@ img {
 
 .campo-mensagem {
     margin: 0 auto !important;
+}
+
+.bg-warning {
+    background-color: rgb(250, 97, 8);
+    color: #FFF;
+    text-align: center;
+    padding: 3px;
+}
+
+#user {
+    width: 20px;
+    height: 18px;
+    padding-top: -5px;
+    padding-right: 5px;
+}
+
+.btn-sm {
+    margin-left: 75%;
+    width: 25%;
 }
