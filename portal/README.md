@@ -1,17 +1,11 @@
-# Curso de Node
-
-## Realizado por Jorge Sant Ana
-
-link do curso: https://www.udemy.com/course/curso-completo-do-desenvolvedor-nodejs
-
 ## Projeto - Portal Notícias
 
-Projeto simples simulando um portal de notícias através da Interface da aplicação. utilizando Node, Ejs e Mysql
+Projeto simples simulando um portal de notícias através da Interface da aplicação.
 
 ### Tecnologias
 
 - Node
-- EJS
+- Ejs
 - Mysql
 
 # Comandos
