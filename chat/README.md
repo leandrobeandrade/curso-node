@@ -19,6 +19,6 @@ Projeto simulando uma simples sala de bate-papo com multi usuários.
 
 - Possuir Mysql instalado na máquina
 
-![](https://github.com/leandrobeandrade/curso-node/blob/master/chat/home.gif)
+![](https://github.com/leandrobeandrade/curso-node/blob/master/chat/home.png)
 ![](https://github.com/leandrobeandrade/curso-node/blob/master/chat/chat.png)
 ![](https://github.com/leandrobeandrade/curso-node/blob/master/chat/part.png)
