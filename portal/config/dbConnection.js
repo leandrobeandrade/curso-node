@@ -9,8 +9,6 @@ let connectMySQL = () => {
   })
 }
 
-module.exports = () => {
-  return connectMySQL;
-}
+module.exports = () => connectMySQL;
 
 // rodar mysql => mysql -u localhost -u root -p
