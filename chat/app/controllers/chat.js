@@ -1,5 +1,5 @@
 module.exports.chat$ = (application, req, res) => {
-  let dadosForm = req.body
+  let dadosForm = req.body;
 
   req.assert('apelido', 'Preenchimento obigatório').notEmpty()
   req.assert('apelido', 'Campo deve conter entre 3 e 15 caracteres').len(3, 15)
