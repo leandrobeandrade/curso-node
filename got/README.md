@@ -1,6 +1,6 @@
 ## Projeto - RPG Game of Thrones
 
-Projeto simulando um jojo RPG baseado na série de televisão.
+Projeto simulando um jogo RPG baseado na série de televisão.
 
 ### Tecnologias
 

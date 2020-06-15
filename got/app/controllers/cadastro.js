@@ -17,5 +17,17 @@ module.exports.cadastrar = (application, req, res) => {
     return
   }
 
-  res.send('cadastrrar')
+  let connection = application.config.dbConnection()
+  let usuariosDAO = new application.app.models.usuariosDAO(connection)
+  let jogoDAO = new application.app.models.jogoDAO(connection)
+
+  usuariosDAO.inserirUsuario(dadosForm, (error, result) => {
+    if(error) throw error
+    console.log(result)
+  })
+
+  jogoDAO.gerarParametros(dadosForm.usuario, (error, result) => {
+    if(error) throw error
+    console.log(result)
+  })
 }
