@@ -19,6 +19,7 @@ Projeto simulando um jogo RPG baseado na série de televisão.
 
 - Possuir Mysql instalado na máquina
 
-![](https://github.com/leandrobeandrade/curso-node/blob/master/chat/home.png)
-![](https://github.com/leandrobeandrade/curso-node/blob/master/chat/chat.png)
-![](https://github.com/leandrobeandrade/curso-node/blob/master/chat/part.png)
+![](https://github.com/leandrobeandrade/curso-node/blob/master/got/home.png)
+![](https://github.com/leandrobeandrade/curso-node/blob/master/got/jogo.png)
+![](https://github.com/leandrobeandrade/curso-node/blob/master/got/cadastro.png)
+![](https://github.com/leandrobeandrade/curso-node/blob/master/got/cadastrado.png)
