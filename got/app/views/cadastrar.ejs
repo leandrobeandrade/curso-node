@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <title>MMORPG - Game of Thrones</title>
+    <script src="js/jquery-3.5.1.js"></script>
+    <link rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
+    />
+    <link href="css/style.css" rel="stylesheet" />
+  </head>
+
+  <body class="body-index">
+    <nav class="navbar navbar-default navbar-static-top">
+      <div class="container">
+        <form class="form-inline form-entrar">
+          <div class="form-group">
+            <a href="/"><button type="button" class="btn btn-success">Entrar</button></a>
+          </div>
+        </form>
+      </div>
+    </nav>
+
+    <div class="container" style="color: white;">
+      <h1>Usuário cadastrado no sistema com sucesso!</h1>
+      
+      <hr>
+
+      <ul class="list-group">
+        <li class="list-group-item list-group-item-info">USUÁRIO - <%= dados.usuario %></li>
+        <li class="list-group-item list-group-item-info">NOME - <%= dados.nome %></li>
+        <li class="list-group-item list-group-item-info">CASA - <%= dados.casa %></li>
+      </ul>
+    </div>
+  </body>
+</html>

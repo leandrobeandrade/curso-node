@@ -11,7 +11,6 @@ module.exports.cadastrar = (application, req, res) => {
   req.assert('casa', 'Casa é obrigatório!').notEmpty()
 
   let erros = req.validationErrors()
-  console.log(erros)
 
   if(erros) {
     res.render('cadastro', { validacao: erros, dadosForm: dadosForm })
@@ -23,5 +22,6 @@ module.exports.cadastrar = (application, req, res) => {
 
   usuariosDAO.inserirUsuario(dadosForm, (error, result) => {
     if(error) throw error
+    res.render('cadastrar', { dados: dadosForm })
   })
 }
