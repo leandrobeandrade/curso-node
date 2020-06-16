@@ -19,12 +19,10 @@ module.exports.autenticar = (application, req, res) => {
   usuariosDAO.autenticar(dadosForm, (error, result) => {
     if(error) throw error
 
-    console.log(result)
-
     if(result.length > 0) {
       req.session.autorizado = true
-
-      req.session.usuario = result[0].usuario
+     
+      req.session.usuario = result[0]
       req.session.casa = result[0].casa
     }
     if(req.session.autorizado) res.redirect('jogo')

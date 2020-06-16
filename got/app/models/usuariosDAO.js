@@ -3,6 +3,7 @@ function UsuariosDAO(connection) {
 }
 
 UsuariosDAO.prototype.inserirUsuario = function(usuario, callback) {
+  console.log(usuario)
   this.connection.query('insert into usuarios set ?', usuario, callback)
 }
 

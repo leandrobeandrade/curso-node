@@ -2,6 +2,9 @@ function JogoDAO(connection) {
   this.connection = connection
 }
 
-JogoDAO.prototype.gerarParametros = function(usuario, callback) {
-  this.connection.query('insert into jogo set ?', usuario, callback)
+JogoDAO.prototype.acao = function(acoes, callback) {
+  console.log('Acoes: ', acoes)
+  // this.connection.query('select * from usuarios', usuario, callback)
 }
+
+module.exports = () => JogoDAO

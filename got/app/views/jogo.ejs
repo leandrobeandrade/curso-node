@@ -19,69 +19,75 @@
     </nav>
 
       <div class="container">
-        
-      <div class="row">
+        <% if(comando == 'S') { %>
+          <div class="alert alert-danger erros"><b>ERRO! Preencha todos os campos</b></div>
+        <% } %>
+        <div class="row">
           <div class="col-sm-3 casa">
-          <img src="images/casa_<%=img_casa%>.jpg" />
-        </div>
+            <img src="images/casa_<%=img_casa%>.jpg" />
+          </div>
 
           <div class="col-sm-9">
-          <div class="row barra-superior">
-            <div class="col-sm-2"> 
-              <img src="images/habilidades/temor.jpg" title="Temor" alt="Temor" />
-              <span>754</span>
-            </div>
+            <div class="row barra-superior">
+              <div class="col-sm-2"> 
+                <img src="images/habilidades/temor.jpg" title="Temor" alt="Temor" />
+                <span id="valorTemor"><%= usuario.temor %></span>
+              </div>
             
-            <div class="col-sm-2"> 
-              <img src="images/habilidades/sabedoria.jpg" title="Sabedoria" alt="Sabedoria"/>
-              <span>754</span>
-            </div>
+              <div class="col-sm-2"> 
+                <img src="images/habilidades/sabedoria.jpg" title="Sabedoria" alt="Sabedoria"/>
+                <span id="valorSabedoria"><%= usuario.sabedoria %></span>
+              </div>
             
-            <div class="col-sm-2"> 
-              <img src="images/habilidades/comercio.jpg" title="Comércio" alt="Comércio"/>
-              <span>754</span>
-            </div>
+              <div class="col-sm-2"> 
+                <img src="images/habilidades/comercio.jpg" title="Comércio" alt="Comércio"/>
+                <span id="valorComercio"><%= usuario.comercio %></span>
+              </div>
             
-            <div class="col-sm-2"> 
-              <img src="images/habilidades/magia.jpg" title="Magia" alt="Magia"/>
-              <span>754</span>
+              <div class="col-sm-2"> 
+                <img src="images/habilidades/magia.jpg" title="Magia" alt="Magia"/>
+                <span id="valorMagia"><%= usuario.magia %></span>
+              </div>
             </div>
           </div>
         </div>
-        </div>
-      
-      <div class="row">
-        <div class="col-sm-3"></div>
-        <div class="col-sm-9">
-          <div class="acoes"></div>					
-        </div>
-      </div>
-      
-    </div>	
-    
-    <div class="barra-inferior">
-      <div class="container">
       
         <div class="row">
-          <div class="col-sm-1">
-            <img src="images/outros/suditos.jpg" title="Aldeões" alt="Aldeões"/>
+          <div class="col-sm-3"></div>
+          <div class="col-sm-9">
+            <div class="acoes" id="acoes">
+              Senhor, o que deseja fazer hoje?
+            </div>					
           </div>
-          
-          <div class="col-sm-1">
-            <img src="images/outros/pergaminho.jpg" title="Pergaminhos" alt="Pergaminhos"/>
+        </div>
+      
+      </div>	
+    
+      <div class="barra-inferior">
+        <div class="container">
+        
+          <div class="row">
+            <div class="col-sm-1">
+              <img src="images/outros/suditos.jpg" id="btn_sud" title="Aldeões" alt="Aldeões"/>
+              <span><%= usuario.moeda %></span>
+            </div>
+            
+            <div class="col-sm-1">
+              <img src="images/outros/pergaminho.jpg" id="btn-per" title="Pergaminhos" alt="Pergaminhos"/>
+            </div>
+            
+            <div class="col-sm-8"></div>
+            
+            <div class="col-sm-2">
+              <img src="images/outros/moeda.jpg" title="Moeda" alt="Moeda"/>
+              <span><%= usuario.suditos %></span>
+            </div>
+            
           </div>
-          
-          <div class="col-sm-8"></div>
-          
-          <div class="col-sm-2">
-            <img src="images/outros/moeda.jpg" title="Moeda" alt="Moeda"/>
-            <span>25</span>
-          </div>
-          
         </div>
       </div>
-    </div>
 
     <script src="js/logout.js"></script>
+    <script src="js/functions.js"></script>
   </body>
 </html>
