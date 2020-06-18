@@ -4,7 +4,7 @@
       <img src="../../assets/images/celulares.jpg" class="img-responsive" />
     </div>
 
-    <div class="col-md-5 rounded painel-login">
+    <div class="col-md-4 rounded painel-login">
       <div class="panel panel-default">
         <div class="panel-body">
           <div class="row">
@@ -14,7 +14,7 @@
               </div>
               <br />
 
-              <form action="/home" method="get">
+              <form>
                 <div class="form-group">
                   <label class="font-weight-bold text-white">Nome de usuário *</label>
                   <input type="text" name="usuario" class="form-control" />
@@ -26,19 +26,20 @@
                 </div>
                 <hr>
                 <div class="form-group text-center">
-                  <a routerLink="/home">
-                    <button class="btn btn-success btn-block">Entrar</button>
-                  </a> <br>
-                  <a routerLink="/cadastrar" class="text-info">Cadastrar-se</a>
+                  <button class="btn btn-success btn-block" (click)="login()">Entrar</button>
+                  <br>
+                  <a routerLink="/cadastrar" class="text-warning">Cadastrar-se</a>
                 </div>
                 <hr>
                 <div class="form-group">
-                  <div class="row">
+                  <div class="row justify-content-center">
                     <a routerLink="/home">
-                      <button class="btn btn-danger ml-5 mr-4">Entrar com o Google</button>
-                    </a>
-                    <a href="/home">
                       <button class="btn btn-primary">Entrar com o Facebook</button>
+                    </a>
+                  </div>
+                  <div class="row justify-content-center mt-2">
+                    <a routerLink="/home">
+                      <button class="btn btn-danger">Entrar com o Google</button>
                     </a>
                   </div>
                 </div>
@@ -48,6 +49,6 @@
         </div>
       </div>
     </div>
-    <div class="col-md-1"></div>
+    <div class="col-md-2"></div>
   </div>
 </div>
