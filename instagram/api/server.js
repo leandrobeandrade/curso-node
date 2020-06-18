@@ -25,7 +25,7 @@ app.get('/', (req, res) => {
   res.send(resposta)  
 })
 
-app.post('/api', (req, res) => {                // insere um registro na banco
+app.post('/api', (req, res) => {                // insere um registro no banco
   let dados = req.body
   res.send(dados)
 
@@ -35,27 +35,37 @@ app.post('/api', (req, res) => {                // insere um registro na banco
   })
 })
 
-app.get('/api', (req, res) => {                 // busca todos registros na banco
+app.get('/api', (req, res) => {                 // busca todos registros no banco
   connection.query('select * from postagens', (err, result) => {
     if(err) throw err
     res.send(result)
   })
 })
 
-app.get('/api/:id', (req, res) => {             // busca um registro na banco
+app.get('/api/:id', (req, res) => {             // busca um registro no banco
   let id = req.params
 
   connection.query(`select * from postagens where id = "${id.id}"`, (err, result) => {
+    if(err) throw err
+    if(result.length > 0) res.status(200).send(result)
+    if(result.length == 0) res.status(400).send('BAD Request :(')
+  })
+})
+
+app.put('/api/:id', (req, res) => {             // atualiza um campo no banco
+  let id = req.params
+  let dados = req.body
+
+  connection.query(`update postagens set titulo = "${dados.titulo}" where id = "${id.id}"`, (err, result) => {
     if(err) throw err
     res.send(result)
   })
 })
 
-app.put('/api/:id', (req, res) => {
+app.delete('/api/:id', (req, res) => {            // deleta um registro no banco
   let id = req.params
-  let dados = req.body
 
-  connection.query(`update postagens set titulo = "${dados.titulo}" where id = "${id.id}"`, (err, result) => {
+  connection.query(`delete from postagens where id = "${id.id}"`, (err, result) => {
     if(err) throw err
     res.send(result)
   })
