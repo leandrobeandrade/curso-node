@@ -44,14 +44,24 @@ app.post('/user', (req, res) => {                // insere um registro no banco
   })
 })
 
-app.get('/user', (req, res) => {                 // busca todos registros no banco
+app.get('/users', (req, res) => {                 // busca todos registros no banco
   connection.query('select * from usuarios', (err, result) => {
     if(err) throw err
     res.send(result)
   })
 })
 
-app.get('/api/:id', (req, res) => {             // busca um registro no banco
+app.get('/users/:nome/:senha', (req, res) => {              // busca um registro no banco
+  let user = req.params                                     // pelo nome e pela senha (login)
+
+  connection.query(`select * from usuarios where nome = "${user.nome}" and senha = "${user.senha}"`, (err, result) => {
+    if(err) throw err
+    console.log(result)
+    res.send(result)
+  })
+})
+
+app.get('/api/:id', (req, res) => {               // busca um registro no banco
   let id = req.params
 
   connection.query(`select * from postagens where id = "${id.id}"`, (err, result) => {

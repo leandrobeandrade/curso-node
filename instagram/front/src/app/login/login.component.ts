@@ -26,11 +26,11 @@ export class LoginComponent implements OnInit {
     this.user.senha = this.formLogin.value.senha
 
     this.loginService.login(this.user).subscribe((result) => {
-      if(!result) return
-      else {
-        this.router.navigateByUrl('/home')
+      // if(!result) return
+      // else {
+        // this.router.navigateByUrl('/home')
         console.log(result)
-      }
+      // }
     })
   }
 

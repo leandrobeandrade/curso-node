@@ -8,7 +8,7 @@ import { Users } from 'src/models/user.model';
   providedIn: 'root'
 })
 export class LoginService {
-  readonly url = 'http://localhost:3000/api'
+  readonly url = 'http://localhost:3000/users'
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   }
@@ -16,7 +16,8 @@ export class LoginService {
   constructor(private http: HttpClient) { }
 
   login(user: Users): Observable<Users> {
-    return this.http.post<Users>(this.url, user).pipe(map((data: Users) => data))
+    let _url = `${this.url}/${user.nome}/${user.senha}`
+    return this.http.get<Users>(_url, this.httpOptions).pipe(map((data: Users) => data))
   }
 
 }
