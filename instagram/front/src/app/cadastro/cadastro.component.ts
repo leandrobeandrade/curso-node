@@ -2,17 +2,19 @@ import { Component, OnInit } from '@angular/core';
 import { Users } from 'src/models/user.model';
 import { Router } from '@angular/router';
 import { FormGroup, FormControl } from '@angular/forms';
+import { RegisterService } from 'src/services/register.service';
 
 @Component({
   selector: 'app-cadastro',
   templateUrl: './cadastro.component.html',
-  styleUrls: ['./cadastro.component.scss']
+  styleUrls: ['./cadastro.component.scss'],
+  providers: [RegisterService]
 })
 export class CadastroComponent implements OnInit {
   public user: Users;
   public formRegister: FormGroup;
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private registerService: RegisterService) { }
 
   ngOnInit() {
     this.user = new Users()
@@ -23,9 +25,14 @@ export class CadastroComponent implements OnInit {
     this.user.nome = this.formRegister.value.nome
     this.user.email = this.formRegister.value.email
     this.user.senha = this.formRegister.value.senha
-    
-    // this.router.navigateByUrl('/home')
-    console.log(this.user)
+
+    this.registerService.addUsers(this.user).subscribe((result) => {
+      if(!result) return
+      else {
+        this.router.navigateByUrl('/')
+        console.log(result)
+      }
+    })
   }
 
   createForm(user: Users) {

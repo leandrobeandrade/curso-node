@@ -11,19 +11,28 @@ import { Users } from 'src/models/user.model';
   providers: [LoginService]
 })
 export class LoginComponent implements OnInit {
+  public user: Users;
   public formLogin: FormGroup
 
   constructor(private router: Router, private loginService: LoginService) { }
 
   ngOnInit() {
-    this.loginService.listUsers().subscribe(x => console.log(x))
+    this.user = new Users()
     this.createForm(new Users())
   }
 
   login() {
-    this.router.navigateByUrl('/home')
-  }
+    this.user.nome = this.formLogin.value.nome
+    this.user.senha = this.formLogin.value.senha
 
+    this.loginService.login(this.user).subscribe((result) => {
+      if(!result) return
+      else {
+        this.router.navigateByUrl('/home')
+        console.log(result)
+      }
+    })
+  }
 
   createForm(users: Users) {
     this.formLogin = new FormGroup({

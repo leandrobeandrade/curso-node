@@ -15,8 +15,8 @@ export class RegisterService {
 
   constructor(private http: HttpClient) { }
 
-  listUsers(): Observable<Users> {
-    return this.http.get<Users>(this.url, this.httpOptions).pipe(map((data: Users) => data))
+  addUsers(user: Users): Observable<Users> {
+    return this.http.post<Users>(this.url, user).pipe(map((data: Users) => data))
   }
 
 }
