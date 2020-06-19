@@ -14,15 +14,15 @@
               </div>
               <br />
 
-              <form>
+              <form [formGroup]="formLogin">
                 <div class="form-group">
                   <label class="font-weight-bold text-white">Nome de usuário *</label>
-                  <input type="text" name="usuario" class="form-control" />
+                  <input type="text" name="nome" class="form-control" required formControlName="nome" />
                 </div>
 
                 <div class="form-group">
                   <label class="font-weight-bold text-white">Senha *</label>
-                  <input type="password" name="senha" class="form-control" />
+                  <input type="password" name="senha" class="form-control" formControlName="senha" required/>
                 </div>
                 <hr>
                 <div class="form-group text-center">

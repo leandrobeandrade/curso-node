@@ -10,26 +10,34 @@
               </div>
               <br />
 
-              <form>
+              <form [formGroup]="formRegister" (submit)="register()">
                 <div class="form-group">
                   <label class="font-weight-bold">Nome de usuário *</label>
-                  <input type="text" name="usuario" class="form-control" />
+                  <input type="text" name="nome" class="form-control" required 
+                  formControlName="nome" [(ngModel)]="user.nome" #user />
+                </div>
+                <div class="form-group">
+                  <label class="font-weight-bold">Email *</label>
+                  <input type="email" name="email" class="form-control" required #email
+                  formControlName="email" [(ngModel)]="user.email" />
                 </div>
                 <div class="form-group">
                   <label class="font-weight-bold">Senha *</label>
-                  <input type="password" name="senha" class="form-control" />
+                  <input type="password" name="senha" class="form-control" required #senha1
+                  formControlName="senha" [(ngModel)]="user.senha" />
                 </div>
                 <div class="form-group">
                   <label class="font-weight-bold">Repetir Senha *</label>
-                  <input type="password" name="senha" class="form-control" />
+                  <input type="password" name="senha2" class="form-control" required #senha2
+                  formControlName="senha2" />
                 </div>
-                <hr />
                 <div class="form-group text-center">
-                  <button class="btn btn-success btn-block" (click)="register()">
-                    Cadastrar
-                  </button>
+                  <button class="btn btn-success btn-block" 
+                  [disabled]="(user.value == '' || senha1.value == '' || email.value == '') || 
+                  senha2.value !== senha1.value">Cadastrar</button>
                 </div>
                 <hr />
+                <p class="text-muted">Cadastre-se e divirta-se na nossa plataforma :)</p>
               </form>
             </div>
           </div>

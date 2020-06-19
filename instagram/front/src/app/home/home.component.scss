@@ -1,0 +1,36 @@
+.navbar {
+  background-color: #fff;
+
+  img {
+    cursor: pointer;
+  }
+}
+
+.posts {
+  margin-top: 120px;
+}
+
+.modal {
+  display: none;
+  margin: 150px auto;
+  height: 100vh;
+
+  .card-header,
+  .card-footer {
+    background-color: #cc9bf0;
+    color: #fff;
+  }
+
+  input[type=file] {
+    height: 45px;
+  }
+}
+
+.ng-valid[required],
+.ng-valid.required {
+  border-left: 5px solid #42a948;
+}
+
+.ng-invalid:not(form) {
+  border-left: 5px solid #a94442;
+}

@@ -1,7 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-// import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -20,9 +22,12 @@ import { ErrorComponent } from './error/error.component';
   ],
   imports: [
     BrowserModule,
+    CommonModule,
+    RouterModule,
+    ReactiveFormsModule,
+    FormsModule,
+    HttpClientModule,
     AppRoutingModule,
-    RouterModule
-    // ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
