@@ -8,7 +8,7 @@ import { Users } from 'src/models/user.model';
   providedIn: 'root'
 })
 export class RegisterService {
-  readonly url = 'http://localhost:3000/api'
+  readonly url = 'http://localhost:3000/users'
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   }

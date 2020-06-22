@@ -15,10 +15,8 @@
   margin: 150px auto;
   height: 100vh;
 
-  .card-header,
-  .card-footer {
-    background-color: #cc9bf0;
-    color: #fff;
+  .card {
+    border: solid 1px #000;
   }
 
   input[type=file] {

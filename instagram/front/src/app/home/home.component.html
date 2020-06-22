@@ -26,29 +26,31 @@
   <div class="row">
     <div class="col-md-6 offset-md-3">
       <div class="card">
-        <div class="card-header text-center text-dark">
+        <div class="card-header text-center text-white bg-dark">
           Realize uma publicação no seu perfil
-          <button type="button" class="close" (click)="closeModal()">
+          <button type="button" class="close text-white" title="Fechar" (click)="closeModal()">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
         <div class="card-body">
-          <form [formGroup]="formPosts" (ngSubmit)="onSubmit()">
+          <form [formGroup]="formPosts">
             <div class="form-group">
               <label>Escolha uma foto</label>
-              <input type="file" class="form-control" name="arqs" formControlName="arqs" required>
+              <input type="file" class="form-control" name="arqs" accept=".png, .jpg, .jpeg" required
+                formControlName="arquivo" (change)="insertFiles($event.target.files)">
               <small class="form-text text-muted">
                 Enviar imagens no formato <b>jpeg ou png</b>.
               </small>
             </div>
             <div class="form-group">
               <label>Descrição</label>
-              <input type="text" class="form-control" name="descricao" formControlName="desc" required>
+              <input type="text" class="form-control" name="desc" required
+                formControlName="descricao">
             </div>
           </form>
         </div>
-        <div class="card-footer text-right">
-          <button type="submit" class="btn btn-success">Enviar 
+        <div class="card-footer text-right bg-dark">
+          <button type="button" class="btn btn-success" (click)="onSubmit()">Enviar 
             <i class="fa fa-paper-plane"></i>
           </button>
         </div>

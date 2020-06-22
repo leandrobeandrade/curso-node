@@ -13,6 +13,7 @@ import { Users } from 'src/models/user.model';
 export class LoginComponent implements OnInit {
   public user: Users;
   public formLogin: FormGroup
+  public erros = false
 
   constructor(private router: Router, private loginService: LoginService) { }
 
@@ -25,12 +26,14 @@ export class LoginComponent implements OnInit {
     this.user.nome = this.formLogin.value.nome
     this.user.senha = this.formLogin.value.senha
 
-    this.loginService.login(this.user).subscribe((result) => {
-      // if(!result) return
-      // else {
-        // this.router.navigateByUrl('/home')
+    this.loginService.login(this.user).subscribe((result: any) => {
+      if(result.length == 0) {
+        this.erros = true
+      }
+      else {
+        this.router.navigateByUrl('/home')
         console.log(result)
-      // }
+      }
     })
   }
 

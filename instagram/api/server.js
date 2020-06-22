@@ -10,8 +10,10 @@ app.use(bodyParser.json())
 app.use(multiparty())
 
 app.use((req, res, next) => {
-  res.header('Access-Control-Allow-Origin', 'http://localhost:4200');
+  res.header('Access-Control-Allow-Origin', 'http://localhost:4200')
+  res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE')
   res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, X-XSRF-TOKEN, Content-Type, Accept');
+  res.header('Access-Control-Allow-Credentials', true);
   next();
 })
 
@@ -34,7 +36,7 @@ app.get('/', (req, res) => {
   res.send(resposta)  
 })
 
-app.post('/user', (req, res) => {                // insere um registro no banco
+app.post('/users', (req, res) => {                  // insere um registro no banco
   let dados = req.body
   res.send(dados)
 
@@ -44,15 +46,15 @@ app.post('/user', (req, res) => {                // insere um registro no banco
   })
 })
 
-app.get('/users', (req, res) => {                 // busca todos registros no banco
+app.get('/users', (req, res) => {                   // busca todos registros no banco
   connection.query('select * from usuarios', (err, result) => {
     if(err) throw err
     res.send(result)
   })
 })
 
-app.get('/users/:nome/:senha', (req, res) => {              // busca um registro no banco
-  let user = req.params                                     // pelo nome e pela senha (login)
+app.get('/users/:nome/:senha', (req, res) => {      // busca um registro no banco
+  let user = req.params                             // pelo nome e pela senha (login)
 
   connection.query(`select * from usuarios where nome = "${user.nome}" and senha = "${user.senha}"`, (err, result) => {
     if(err) throw err
@@ -61,7 +63,7 @@ app.get('/users/:nome/:senha', (req, res) => {              // busca um registro
   })
 })
 
-app.get('/api/:id', (req, res) => {               // busca um registro no banco
+app.get('/users/:id', (req, res) => {               // busca um registro no banco
   let id = req.params
 
   connection.query(`select * from postagens where id = "${id.id}"`, (err, result) => {
@@ -71,7 +73,7 @@ app.get('/api/:id', (req, res) => {               // busca um registro no banco
   })
 })
 
-app.put('/api/:id', (req, res) => {             // atualiza um campo no banco
+app.put('/users/:id', (req, res) => {               // atualiza um campo no banco
   let id = req.params
   let dados = req.body
 
@@ -81,7 +83,7 @@ app.put('/api/:id', (req, res) => {             // atualiza um campo no banco
   })
 })
 
-app.delete('/api/:id', (req, res) => {            // deleta um registro no banco
+app.delete('/users/:id', (req, res) => {            // deleta um registro no banco
   let id = req.params
 
   connection.query(`delete from postagens where id = "${id.id}"`, (err, result) => {
@@ -90,27 +92,32 @@ app.delete('/api/:id', (req, res) => {            // deleta um registro no banco
   })
 })
 
+/*========
+POSTAGENS |
+=========*/
+
 /* Exemplo de inserção de postagem */
-/* app.post('/api', (req, res) => {
+app.post('/posts', (req, res) => {
+  console.log('FILE =>', req.body)
   let date = new Date()
   time_stamp = date.getTime()
 
-  let url_imagem = time_stsmp +'_'+ req.files.arqs.originalFileName
+  let url_imagem = time_stamp +'_'+ req.files.arquivo.originalFileName
 
-  let path_orig = req.files.arqs.path
+  let path_orig = req.files.arquivo.path
   let path_dest = './uploads/' + url_imagem
 
-  fs.rename(path_orig, path_dest, (err) => {
+  fileSystem.rename(path_orig, path_dest, (err) => {
     if(err) res.status(500).send(err)
   })
 
   let posts = {
     url_imagem: url_imagem,
-    titulo: req.body.titulo
+    descricao: req.body.descricao
   }
 
-  connection.query('insert into postagens set ?', dados, (err, result, fields) => {
-    if(err) throw err
-    console.log('RESULTS: ', result)
-  })
-}) */
+  // connection.query('insert into postagens set ?', posts, (err, result, fields) => {
+  //   if(err) console.log(err)
+  //   console.log('RESULTS: ', result)
+  // })
+})

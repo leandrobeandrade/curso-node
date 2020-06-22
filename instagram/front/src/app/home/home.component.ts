@@ -1,33 +1,51 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormControlName } from '@angular/forms';
 import { Posts } from 'src/models/posts.models';
+import { PostsService } from 'src/services/posts.service';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+  styleUrls: ['./home.component.scss'],
+  providers: [PostsService]
 })
 export class HomeComponent implements OnInit {
-
+  posts: Posts
   formPosts: FormGroup
+  arquivo: File
 
-  constructor() { }
+  constructor(private postsService: PostsService) { }
 
   ngOnInit() {
+    this.posts = new Posts()
     this.createForm(new Posts())
   }
 
   createForm(posts: Posts) {
     this.formPosts = new FormGroup({
-      arqs: new FormControl(posts.file),
-      desc: new FormControl(posts.descricao)
+      arquivo: new FormControl(posts.url_imagem),
+      descricao: new FormControl(posts.descricao)
     })
   }
 
   onSubmit() {
-    console.log(this.formPosts.value);
+    this.posts.url_imagem = this.formPosts.value.arquivo
+    this.posts.descricao = this.formPosts.value.descricao;
 
-    this.formPosts.reset(new  Posts());
+    let formData = new FormData()
+    formData.append('arqs', this.arquivo)
+    formData.append('desc', this.posts.descricao)
+    let data = {
+      arquivo: formData.get('arqs'),
+      descricao: formData.get('desc')
+    }
+
+    console.log(data)
+    this.postsService.AddPost(data).subscribe(result => console.log(result))
+  }
+
+  insertFiles(files) {
+    this.arquivo = files[0]
   }
 
   post() {
