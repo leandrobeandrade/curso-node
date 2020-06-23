@@ -14,13 +14,6 @@ export class PostsService {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   }
 
-  httpOption$ = {
-    headers: new HttpHeaders({ 
-      'Content-Type': 'multipart/form-data', 
-      'Accept': 'application/json' 
-    })
-  }
-
   constructor(private http: HttpClient) { }
 
   listPosts(): Observable<Posts> {
@@ -28,8 +21,7 @@ export class PostsService {
   }
 
   AddPost(dados): Observable<Users> {
-    console.log(dados)
-    return this.http.post<Users>(this.url, dados, this.httpOptions).pipe(map((data: Users) => data))
+    return this.http.post<Users>(this.url, dados).pipe(map((data: Users) => data))
   }
 
   findPost(posts: Posts): Observable<Users> {

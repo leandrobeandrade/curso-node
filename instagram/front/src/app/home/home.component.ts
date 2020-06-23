@@ -30,18 +30,13 @@ export class HomeComponent implements OnInit {
 
   onSubmit() {
     this.posts.url_imagem = this.formPosts.value.arquivo
-    this.posts.descricao = this.formPosts.value.descricao;
+    this.posts.descricao = this.formPosts.value.descricao
 
     let formData = new FormData()
     formData.append('arqs', this.arquivo)
     formData.append('desc', this.posts.descricao)
-    let data = {
-      arquivo: formData.get('arqs'),
-      descricao: formData.get('desc')
-    }
 
-    console.log(data)
-    this.postsService.AddPost(data).subscribe(result => console.log(result))
+    this.postsService.AddPost(formData).subscribe(result => console.log(result))
   }
 
   insertFiles(files) {
@@ -52,6 +47,7 @@ export class HomeComponent implements OnInit {
     document.getElementById('modal').style.display = 'block'
     document.getElementById('posts').style.opacity = '0.1'
     document.getElementById('nav').style.opacity = '0.1'
+    this.createForm(new Posts())
   }
 
   closeModal() {

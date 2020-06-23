@@ -2,7 +2,8 @@ let express = require('express')
 let mysql = require('mysql')
 let bodyParser = require('body-parser')
 let multiparty = require('connect-multiparty')
-let fileSystem = require('fs')
+let fileSystem = require('fs-extra')
+
 let app = express()
 
 app.use(bodyParser.urlencoded({ extended: true }))
@@ -98,26 +99,40 @@ POSTAGENS |
 
 /* Exemplo de inserção de postagem */
 app.post('/posts', (req, res) => {
-  console.log('FILE =>', req.body)
+  let arquivo = req.files
   let date = new Date()
   time_stamp = date.getTime()
 
-  let url_imagem = time_stamp +'_'+ req.files.arquivo.originalFileName
+  let url_imagem = `${time_stamp}_${arquivo.arqs.name}`
 
-  let path_orig = req.files.arquivo.path
-  let path_dest = './uploads/' + url_imagem
-
-  fileSystem.rename(path_orig, path_dest, (err) => {
-    if(err) res.status(500).send(err)
-  })
+  let path_orig = req.files.arqs.path
+  let path_dest = `./uploads/${url_imagem}` 
 
   let posts = {
     url_imagem: url_imagem,
-    descricao: req.body.descricao
+    descricao: req.body.desc
   }
 
-  // connection.query('insert into postagens set ?', posts, (err, result, fields) => {
-  //   if(err) console.log(err)
-  //   console.log('RESULTS: ', result)
-  // })
+  res.setHeader('Access-Control-Allow-Origin', '*')
+
+  connection.query('insert into postagens set ?', posts, (err, result, fields) => {
+    if(err) {
+      console.log(err)
+      return
+    }
+
+    fileSystem.move(path_orig, path_dest, function (err) {
+      if (err) return console.error(err)
+      console.log("success!")
+    })
+    console.log('RESULTS: ', result)
+  })
+})
+
+app.get('/post/:id', (req, res) => {
+  connection.query(`select * from postagens where id = "${id.id}"`, (err, result) => {
+    if(err) throw err
+    if(result.length > 0) res.status(200).send(result)
+    if(result.length == 0) res.status(400).send('BAD Request :(')
+  })
 })

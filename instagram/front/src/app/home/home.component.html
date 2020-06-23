@@ -33,7 +33,7 @@
           </button>
         </div>
         <div class="card-body">
-          <form [formGroup]="formPosts">
+          <form [formGroup]="formPosts" enctype="multipart/form-data">
             <div class="form-group">
               <label>Escolha uma foto</label>
               <input type="file" class="form-control" name="arqs" accept=".png, .jpg, .jpeg" required
