@@ -98,7 +98,7 @@ POSTAGENS |
 =========*/
 
 /* Exemplo de inserção de postagem */
-app.post('/posts', (req, res) => {
+app.post('/post', (req, res) => {
   let arquivo = req.files
   let date = new Date()
   time_stamp = date.getTime()
@@ -129,10 +129,51 @@ app.post('/posts', (req, res) => {
   })
 })
 
-app.get('/post/:id', (req, res) => {
-  connection.query(`select * from postagens where id = "${id.id}"`, (err, result) => {
-    if(err) throw err
+/* Exemplo de listagem de postagens */
+app.get('/posts', (req, res) => {
+  connection.query(`select * from postagens`, (err, result) => {
+    if(err) res.status(400).send(err)
     if(result.length > 0) res.status(200).send(result)
-    if(result.length == 0) res.status(400).send('BAD Request :(')
+    if(result.length == 0) res.status(200).send(result)
+  })
+})
+
+/* Exemplo de listagem de imagens */
+app.get('/uploads/:imagem', (req, res) => {
+  let img = req.params
+
+  fileSystem.readFile(`./uploads/${img.imagem}`, (err, content) => {
+    if(err) res.status(400).send(err)
+    else {
+      res.writeHead(200, { 'Content-Type': 'image/png', 'Content-Type': 'image/jpg' })
+      res.end(content)
+    }
+  })
+})
+
+/* Exemplo de atualização de postagens */
+app.put('/post/:id', (req, res) => {
+  let id = req.params
+  let dados = req.body
+
+  connection.query(`update postagens set ? "${dados}" where id = "${id.id}"`, (err, result) => {
+    if(err) res.status(400).send(err)
+    else res.status(200).send(result)
+  })
+})
+
+/* Exemplo de exclusão de postagens */
+app.delete('/post/:id/:url_image', (req, res) => {
+  let dados = req.params
+
+  console.log('params => ', dados)
+
+  let filePath = `./uploads/${dados.url_imagem}` 
+
+  fileSystem.unlinkSync(filePath)
+
+  connection.query(`delete from postagens where id = "${dados.id}"`, (err, result) => {
+    if(err) res.status(400).send(err)
+    else res.status(200).send(result)
   })
 })

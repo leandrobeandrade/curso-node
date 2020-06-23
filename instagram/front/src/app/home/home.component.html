@@ -3,19 +3,43 @@
     <img src="../../assets/images/logo2.jpg" width="150" height="60" alt="">
   </a>
   <form [formGroup] class="form-inline my-2 my-lg-0">
-    <img src="../../assets/images/incluir.jpg" class="mr-5" alt="" (click)="post()">
+    <img src="../../assets/images/incluir.jpg" class="mr-5" alt="" (click)="createPost()">
   </form>
 </nav>
 
 <div class="container-fluid posts" id="posts">
-  <div class="row">
+  <div class="row" *ngIf="noPosts">
     <div class="col-md-6 offset-md-3">
       <div class="jumbotron">
-        <h1 class="display-4">Olá, mundo!</h1>
-        <p class="lead">Este é um simples componente jumbotron para chamar mais atenção a um determinado conteúdo ou informação.</p>
+        <h1 class="text-center">Olá, seja Bem-vindo(a) <i class="fa fa-heart"></i></h1>
+        <p class="lead text-center">Envie e compartilhe fotos. Interaja com outros usuários e 
+          acima de tudo divirta-se :)</p>
         <hr class="my-4">
-        <p>Ele usa classes utilitárias para tipografia e espaçamento de conteúdo, dentro do maior container.</p>
-        <a class="btn btn-primary btn-lg" href="#" role="button">Leia mais</a>
+        <p class="text-muted">Fique a vontade para compartilhar seu melhores momentos!</p>
+        <button class="btn float-right btn-outline-primary" (click)="createPost()">
+          Criar primeiro post</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6 offset-md-3">
+      <div class="panel bg-white rounded border mb-3" *ngFor="let post of posts$">
+        <div class="panel-body">
+          <p class="pt-3 pl-3 pr-2">
+            <b>{{ post.descricao }}</b>
+            <span class="border rounded ml-5 p-2">
+              <i class="fa fa-pencil text-info mr-2" title="Editar" (click)="editPost(post)"></i> | 
+              <i class="fa fa-trash text-danger ml-2" title="Excluir" (click)="openModalEx(post)"></i>
+            </span>
+            <span class="float-right text-muted">{{ post.data_post | date }} - 
+              <i class="fa fa-calendar"></i>
+            </span>
+          </p>
+          <div class="p-2">
+            <img src="{{images + post.url_imagem }}" alt="Imagens">
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -53,6 +77,29 @@
           <button type="button" class="btn btn-success" (click)="onSubmit()">Enviar 
             <i class="fa fa-paper-plane"></i>
           </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Excluir -->
+<div class="container-fluid modal" id="delete">
+  <div class="row">
+    <div class="col-md-6 offset-md-3">
+      <div class="card">
+        <div class="card-header text-center text-white bg-dark">
+          Excluir Publicação
+          <button type="button" class="close text-white" title="Fechar" (click)="closeModalEx()">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="card-body">
+          Deseja mesmo excluir esta publicação?
+        </div>
+        <div class="card-footer text-right bg-dark">
+          <button type="button" class="btn btn-light" (click)="closeModalEx()">Cancelar</button>
+          <button type="button" class="btn btn-danger ml-2" (click)="deletePost()">Excluir</button>
         </div>
       </div>
     </div>

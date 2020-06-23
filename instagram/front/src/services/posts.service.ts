@@ -3,7 +3,6 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http'
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Posts } from '../models/posts.models'
-import { Users } from 'src/models/user.model';
 
 @Injectable({
   providedIn: 'root'
@@ -20,22 +19,24 @@ export class PostsService {
     return this.http.get<Posts>(this.url).pipe(map((data: Posts) => data))
   }
 
-  AddPost(dados): Observable<Users> {
-    return this.http.post<Users>(this.url, dados).pipe(map((data: Users) => data))
+  AddPost(dados): Observable<Posts> {
+    const url = 'http://localhost:3000/post'
+    return this.http.post<Posts>(url, dados).pipe(map((data: Posts) => data))
   }
 
-  findPost(posts: Posts): Observable<Users> {
-    let _url = `${this.url}/${posts.id}`
-    return this.http.get<Users>(_url).pipe(map((data: Users) => data))
+  findPost(post: Posts): Observable<Posts> {
+    const _url = `${this.url}/${post.id}`
+    return this.http.get<Posts>(_url).pipe(map((data: Posts) => data))
   }
 
-  updatePost(posts: Posts): Observable<Users> {
-    let _url = `${this.url}/${posts.id}`
-    return this.http.put<Users>(_url, this.httpOptions).pipe(map((data: Users) => data))
+  updatePost(post: Posts): Observable<Posts> {
+    const _url = `${this.url}/${post.id}`
+    return this.http.put<Posts>(_url, this.httpOptions).pipe(map((data: Posts) => data))
   }
 
-  deletPost(posts: Posts): Observable<Users> {
-    let _url = `${this.url}/${posts.id}`
-    return this.http.delete<Users>(_url, this.httpOptions).pipe(map((data: Users) => data))
+  deletePost(post: Posts): Observable<Posts> {
+    const _url = `${this.url}/${post.id}/${post.url_imagem}`
+    return this.http.delete<Posts>(_url, this.httpOptions).pipe(map((data: Posts) => data))
   }
+
 }

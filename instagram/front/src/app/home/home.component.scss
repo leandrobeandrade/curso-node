@@ -8,6 +8,15 @@
 
 .posts {
   margin-top: 120px;
+
+  img {
+    width: 100% !important;
+    height: 100% !important;
+  }
+
+  i {
+    cursor: pointer;
+  }
 }
 
 .modal {
@@ -31,4 +40,8 @@
 
 .ng-invalid:not(form) {
   border-left: 5px solid #a94442;
+}
+
+.fa-heart {
+  color: red;
 }
