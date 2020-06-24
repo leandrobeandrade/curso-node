@@ -3,17 +3,19 @@ let mysql = require('mysql')
 let bodyParser = require('body-parser')
 let multiparty = require('connect-multiparty')
 let fileSystem = require('fs-extra')
+let cors = require('cors')
 
 let app = express()
 
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
 app.use(multiparty())
+app.use(cors())
 
-app.use((req, res, next) => {
+app.use((req, res, next) => {                         // Preflight
   res.header('Access-Control-Allow-Origin', 'http://localhost:4200')
   res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE')
-  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, X-XSRF-TOKEN, Content-Type, Accept');
+  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
   res.header('Access-Control-Allow-Credentials', true);
   next();
 })
@@ -165,12 +167,10 @@ app.put('/post/:id', (req, res) => {
 /* Exemplo de exclusão de postagens */
 app.delete('/post/:id/:url_image', (req, res) => {
   let dados = req.params
-
   console.log('params => ', dados)
 
-  let filePath = `./uploads/${dados.url_imagem}` 
-
-  fileSystem.unlinkSync(filePath)
+  let filePath = `./uploads/${dados.url_image}` 
+  fileSystem.unlinkSync(filePath)                     // deleta a imagem da pasta uploads
 
   connection.query(`delete from postagens where id = "${dados.id}"`, (err, result) => {
     if(err) res.status(400).send(err)

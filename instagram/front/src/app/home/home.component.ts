@@ -25,14 +25,7 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
     this.posts = new Posts()
     this.createForm(new Posts())
-
-    this.postsService.listPosts().subscribe((posts: any) => {
-      console.log(posts)
-      if(posts.length != 0) {
-        this.noPosts = false
-        this.posts$ = posts
-      }
-    })
+    this.listPosts()
   }
 
   createForm(posts: Posts) {
@@ -42,7 +35,27 @@ export class HomeComponent implements OnInit {
     })
   }
 
-  onSubmit() {
+  // ===== LIST POSTS
+  listPosts() {
+    this.postsService.listPosts().subscribe((posts: any) => {
+      console.log(posts)
+      if(posts.length != 0) {
+        this.noPosts = false
+        this.posts$ = posts
+      }
+    })
+  }
+
+  // ===== CREATE POST
+  
+  openModal() {
+    document.getElementById('modal').style.display = 'block'
+    document.getElementById('posts').style.opacity = '0.1'
+    document.getElementById('nav').style.opacity = '0.1'
+    this.createForm(new Posts())
+  }
+
+  onCreate() {
     this.posts.url_imagem = this.formPosts.value.arquivo
     this.posts.descricao = this.formPosts.value.descricao
 
@@ -50,25 +63,13 @@ export class HomeComponent implements OnInit {
     formData.append('arqs', this.arquivo)
     formData.append('desc', this.posts.descricao)
 
-    this.postsService.AddPost(formData).subscribe(result => console.log(result))
+    this.postsService.addPost(formData).subscribe(result => result)
     this.closeModal()
+    this.ngOnInit()
   }
 
   insertFiles(files) {
     this.arquivo = files[0]
-  }
-
-  createPost() {
-    document.getElementById('modal').style.display = 'block'
-    document.getElementById('posts').style.opacity = '0.1'
-    document.getElementById('nav').style.opacity = '0.1'
-    this.createForm(new Posts())
-  }
-
-  editPost(post) {
-    document.getElementById('modal').style.display = 'block'
-    document.getElementById('posts').style.opacity = '0.1'
-    document.getElementById('nav').style.opacity = '0.1'
   }
 
   closeModal() {
@@ -78,22 +79,46 @@ export class HomeComponent implements OnInit {
     this.ngOnInit()
   }
 
+  // ===== UPDATE POST
+
+  openModalEd(post) {
+    this.post = post
+    document.getElementById('modal-edit').style.display = 'block'
+    document.getElementById('posts').style.opacity = '0.1'
+    document.getElementById('nav').style.opacity = '0.1'
+  }
+
+  onEdit() {
+    console.log(this.post)
+  }
+
+  closeModalEd() {
+    document.getElementById('modal-edit').style.display = 'none'
+    document.getElementById('posts').style.opacity = '1'
+    document.getElementById('nav').style.opacity = '1'
+    this.ngOnInit()
+  }
+
+  // ===== DELETE POST
+
   openModalEx(post) {
     this.post = post
-    console.log('1: ', post)
     document.getElementById('delete').style.display = 'block'
     document.getElementById('posts').style.opacity = '0.1'
     document.getElementById('nav').style.opacity = '0.1'
   }
 
   deletePost() {
-    this.postsService.deletePost(this.post).subscribe(post => console.log(post))
+    this.postsService.deletePost(this.post).subscribe(result => {
+      if(result) this.closeModalEx()
+    })
   }
  
   closeModalEx() {
     document.getElementById('delete').style.display = 'none'
     document.getElementById('posts').style.opacity = '1'
     document.getElementById('nav').style.opacity = '1'
+    this.ngOnInit()
   }
 
 }

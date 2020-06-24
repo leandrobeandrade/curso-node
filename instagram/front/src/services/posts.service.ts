@@ -8,35 +8,38 @@ import { Posts } from '../models/posts.models'
   providedIn: 'root'
 })
 export class PostsService {
-  readonly url = 'http://localhost:3000/posts'
+  readonly url_posts = 'http://localhost:3000/posts'
+  readonly url_post = 'http://localhost:3000/post'
   httpOptions = {
-    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+    headers: new HttpHeaders({ 
+      'Content-Type': 'application/json', 
+      'Accept': 'application/json',
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Credentials': 'true',
+      'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE',
+    })
   }
 
   constructor(private http: HttpClient) { }
 
   listPosts(): Observable<Posts> {
-    return this.http.get<Posts>(this.url).pipe(map((data: Posts) => data))
+    return this.http.get<Posts>(this.url_posts).pipe(map((data: Posts) => data))
   }
 
-  AddPost(dados): Observable<Posts> {
-    const url = 'http://localhost:3000/post'
-    return this.http.post<Posts>(url, dados).pipe(map((data: Posts) => data))
+  addPost(dados): Observable<Posts> {
+    return this.http.post<Posts>(this.url_post, dados).pipe(map((data: Posts) => data))
   }
 
   findPost(post: Posts): Observable<Posts> {
-    const _url = `${this.url}/${post.id}`
-    return this.http.get<Posts>(_url).pipe(map((data: Posts) => data))
+    return this.http.get<Posts>(`${this.url_post}/${post.id}`).pipe(map((data: Posts) => data))
   }
 
   updatePost(post: Posts): Observable<Posts> {
-    const _url = `${this.url}/${post.id}`
-    return this.http.put<Posts>(_url, this.httpOptions).pipe(map((data: Posts) => data))
+    return this.http.put<Posts>(`${this.url_post}/${post.id}`, this.httpOptions).pipe(map((data: Posts) => data))
   }
 
   deletePost(post: Posts): Observable<Posts> {
-    const _url = `${this.url}/${post.id}/${post.url_imagem}`
-    return this.http.delete<Posts>(_url, this.httpOptions).pipe(map((data: Posts) => data))
+    return this.http.delete<Posts>(`${this.url_post}/${post.id}/${post.url_imagem}`, this.httpOptions).pipe(map((data: Posts) => data))
   }
 
 }

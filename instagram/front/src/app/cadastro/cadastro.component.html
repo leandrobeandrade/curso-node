@@ -12,22 +12,22 @@
 
               <form [formGroup]="formRegister" (submit)="register()">
                 <div class="form-group">
-                  <label class="font-weight-bold">Nome de usuário *</label>
+                  <label><i class="fa fa-user"></i> Nome de usuário *</label>
                   <input type="text" name="nome" class="form-control" required 
                   formControlName="nome" [(ngModel)]="user.nome" #user />
                 </div>
                 <div class="form-group">
-                  <label class="font-weight-bold">Email *</label>
+                  <label><i class="fa fa-envelope"></i> Email *</label>
                   <input type="email" name="email" class="form-control" required #email
                   formControlName="email" [(ngModel)]="user.email" />
                 </div>
                 <div class="form-group">
-                  <label class="font-weight-bold">Senha *</label>
+                  <label><i class="fa fa-lock"></i> Senha *</label>
                   <input type="password" name="senha" class="form-control" required #senha1
                   formControlName="senha" [(ngModel)]="user.senha" />
                 </div>
                 <div class="form-group">
-                  <label class="font-weight-bold">Repetir Senha *</label>
+                  <label><i class="fa fa-lock"></i> Repetir Senha *</label>
                   <input type="password" name="senha2" class="form-control" required #senha2
                   formControlName="senha2" />
                 </div>
@@ -37,7 +37,10 @@
                   senha2.value !== senha1.value">Cadastrar</button>
                 </div>
                 <hr />
-                <p class="text-muted">Cadastre-se e divirta-se na nossa plataforma :)</p>
+                <p class="text-center text-muted">
+                  <span>Já tem cadastro? Faça</span>
+                  <a routerLink="/" class="text-info"> Login</a>
+                </p>
               </form>
             </div>
           </div>
