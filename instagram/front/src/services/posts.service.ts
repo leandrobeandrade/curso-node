@@ -35,7 +35,7 @@ export class PostsService {
   }
 
   updatePost(post: Posts): Observable<Posts> {
-    return this.http.put<Posts>(`${this.url_post}/${post.id}`, this.httpOptions).pipe(map((data: Posts) => data))
+    return this.http.put<Posts>(`${this.url_post}/${post.id}/${post.descricao}`, this.httpOptions).pipe(map((data: Posts) => data))
   }
 
   deletePost(post: Posts): Observable<Posts> {

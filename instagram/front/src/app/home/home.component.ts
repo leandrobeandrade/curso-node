@@ -82,14 +82,16 @@ export class HomeComponent implements OnInit {
   // ===== UPDATE POST
 
   openModalEd(post) {
-    this.post = post
+    this.posts = post
     document.getElementById('modal-edit').style.display = 'block'
     document.getElementById('posts').style.opacity = '0.1'
     document.getElementById('nav').style.opacity = '0.1'
   }
 
   onEdit() {
-    console.log(this.post)
+    console.log(this.posts)
+    this.postsService.updatePost(this.posts).subscribe(result => console.log(result))
+    this.closeModalEd()
   }
 
   closeModalEd() {

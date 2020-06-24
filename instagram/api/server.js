@@ -154,11 +154,10 @@ app.get('/uploads/:imagem', (req, res) => {
 })
 
 /* Exemplo de atualização de postagens */
-app.put('/post/:id', (req, res) => {
-  let id = req.params
-  let dados = req.body
+app.put('/post/:id/:descricao', (req, res) => {
+  let dados = req.params
 
-  connection.query(`update postagens set ? "${dados}" where id = "${id.id}"`, (err, result) => {
+  connection.query(`update postagens set descricao = "${dados.descricao}" where id = "${dados.id}"`, (err, result) => {
     if(err) res.status(400).send(err)
     else res.status(200).send(result)
   })
