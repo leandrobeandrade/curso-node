@@ -1,6 +1,6 @@
-## Projeto - Portal Notícias
+## Projeto - Instagram Clone
 
-Projeto simples simulando uma aplicação baseada na rede social Instagram.
+Projeto simples simulando uma aplicação baseada na rede social Instagram. Consumindo a Api no front com Angular.
 
 ### Tecnologias
 
@@ -26,7 +26,5 @@ Projeto simples simulando uma aplicação baseada na rede social Instagram.
 - Possuir Mysql instalado na máquina
 - Possuir Angular instalado na máquina
 
-![](https://github.com/leandrobeandrade/curso-node/blob/master/portal/home.png)
-![](https://github.com/leandrobeandrade/curso-node/blob/master/portal/news.png)
-![](https://github.com/leandrobeandrade/curso-node/blob/master/portal/new.png)
-![](https://github.com/leandrobeandrade/curso-node/blob/master/portal/cad.png)
+![](https://github.com/leandrobeandrade/curso-node/blob/master/instagram/login.png)
+![](https://github.com/leandrobeandrade/curso-node/blob/master/instagram/db.png)
