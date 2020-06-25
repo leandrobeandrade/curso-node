@@ -41,7 +41,8 @@ module.exports.ordenarAcaoSudito = (application, req, res) => {
     res.send('Erro de autenticação! Obrigatório fazer login.')
     return
   }
-  let dadosForm = req.body
+
+  let dados = req
   
   req.assert('acao', 'Ação deve ser informada!').notEmpty()
   req.assert('quantidade', 'Quantidade deve ser informada!').notEmpty()
@@ -53,16 +54,15 @@ module.exports.ordenarAcaoSudito = (application, req, res) => {
     return
   }
 
-  res.send('Jóia!')
-
   let connection = application.config.dbConnection()
-  let usuariosDAO = new application.app.models.usuariosDAO(connection)
   let jogoDAO = new application.app.models.jogoDAO(connection)
 
-  // jogoDAO.acao(dadosForm, (error, result) => {
-  //   if(error) throw error
-  //   res.render('jogo', dadosForm)
-  // })
+  jogoDAO.acao(dados, (error, result) => {
+    if(error) {
+      console.log(error)
+      return
+    }
+  })
 
-  jogoDAO.acao(dadosForm)
+  res.redirect('jogo?comando_invalido=N')
 }

@@ -1,6 +1,7 @@
 $(() => {
   $('#btn_sud').on('click', () => {
     $('.erros').hide()
+    $('.sucesso').hide()
     $.ajax({
       url: '/suditos',
       method: 'get',
@@ -10,6 +11,7 @@ $(() => {
 
   $('#btn-per').on('click', () => {
     $('.erros').hide()
+    $('.sucesso').hide()
     $.ajax({
       url: '/pergaminhos',
       method: 'get',

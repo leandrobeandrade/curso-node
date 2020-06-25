@@ -18,6 +18,7 @@ Foi desenvolvido a tela de **cadastro** para criar um usuário no banco, tela de
 
 ![](https://github.com/leandrobeandrade/curso-node/blob/master/instagram/front/cadastro.png)
 ![](https://github.com/leandrobeandrade/curso-node/blob/master/instagram/front/login.png)
+![](https://github.com/leandrobeandrade/curso-node/blob/master/instagram/front/welcome.png)
 ![](https://github.com/leandrobeandrade/curso-node/blob/master/instagram/front/home.png)
 ![](https://github.com/leandrobeandrade/curso-node/blob/master/instagram/front/form.png)
 ![](https://github.com/leandrobeandrade/curso-node/blob/master/instagram/front/exclusao.png)
