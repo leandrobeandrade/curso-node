@@ -33,7 +33,21 @@ module.exports.pergaminhos = (application, req, res) => {
     res.send('Erro de autenticação! Obrigatório fazer login.')
     return
   }
-  res.render('pergaminhos', { validacao: {} })
+
+  let usuario = req.session
+
+  let connection = application.config.dbConnection()
+  let jogoDAO = new application.app.models.jogoDAO(connection)
+
+  jogoDAO.getAcoes(usuario, (err, result) => {
+    if(err) {
+      console.log(err)
+      return
+    }
+    console.log(result)
+    res.render('pergaminhos', { acoes: result })
+  })
+  
 }
 
 module.exports.ordenarAcaoSudito = (application, req, res) => {
@@ -57,12 +71,7 @@ module.exports.ordenarAcaoSudito = (application, req, res) => {
   let connection = application.config.dbConnection()
   let jogoDAO = new application.app.models.jogoDAO(connection)
 
-  jogoDAO.acao(dados, (error, result) => {
-    if(error) {
-      console.log(error)
-      return
-    }
-  })
+  jogoDAO.acao(dados)
 
   res.redirect('jogo?comando_invalido=N')
 }

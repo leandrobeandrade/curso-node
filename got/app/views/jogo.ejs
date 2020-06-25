@@ -23,6 +23,9 @@
         <% if(comando == 'S') { %>
           <div class="alert alert-danger erros"><b>ERRO! Preencha todos os campos</b></div>
         <% } %>
+        <% if(comando == 'N') { %>
+          <div class="alert alert-success sucesso"><b>Legal, ação realizada com sucesso!</b></div>
+        <% } %>
         <div class="row">
           <div class="col-sm-3 casa">
             <img src="images/casa_<%=img_casa%>.jpg" />
@@ -30,22 +33,22 @@
 
           <div class="col-sm-9">
             <div class="row barra-superior">
-              <div class="col-sm-2"> 
+              <div class="col-sm-3"> 
                 <img src="images/habilidades/temor.jpg" title="Temor" alt="Temor" />
                 <span id="valorTemor"><%= usuario.temor %></span>
               </div>
             
-              <div class="col-sm-2"> 
+              <div class="col-sm-3"> 
                 <img src="images/habilidades/sabedoria.jpg" title="Sabedoria" alt="Sabedoria"/>
                 <span id="valorSabedoria"><%= usuario.sabedoria %></span>
               </div>
             
-              <div class="col-sm-2"> 
+              <div class="col-sm-3"> 
                 <img src="images/habilidades/comercio.jpg" title="Comércio" alt="Comércio"/>
                 <span id="valorComercio"><%= usuario.comercio %></span>
               </div>
             
-              <div class="col-sm-2"> 
+              <div class="col-sm-3"> 
                 <img src="images/habilidades/magia.jpg" title="Magia" alt="Magia"/>
                 <span id="valorMagia"><%= usuario.magia %></span>
               </div>
@@ -69,12 +72,12 @@
         
           <div class="row">
             <div class="col-sm-1">
-              <img src="images/outros/suditos.jpg" id="btn_sud" title="Aldeões" alt="Aldeões"/>
+              <img src="images/outros/suditos.jpg" class="imgs" id="btn_sud" title="Aldeões" alt="Aldeões"/>
               <span><%= usuario.moeda %></span>
             </div>
             
             <div class="col-sm-1">
-              <img src="images/outros/pergaminho.jpg" id="btn-per" title="Pergaminhos" alt="Pergaminhos"/>
+              <img src="images/outros/pergaminho.jpg" class="imgs" id="btn-per" title="Pergaminhos" alt="Pergaminhos"/>
             </div>
             
             <div class="col-sm-8"></div>

@@ -86,3 +86,7 @@
 .col-xs-2 {
 	text-align: center;
 }
+
+.imgs {
+	cursor: pointer;
+}
