@@ -11,10 +11,14 @@
           case 3: txt_acao = "em treinamento de história"; break;
           case 4: txt_acao = "em treinamento de magia"; break;
         }
+
+        let date = new Date();
+        let momento_atualmente = date.getTime();
+        let segundos_restantes = Math.round((acoes[i].tempo - momento_atualmente) / 1000);
       %>
       <li>
         <%=acoes[i].quantidade%> <%=txt_acao%>
-        - <small>restam <%=acoes[i].tempo %> segundos</small>
+        - <small>restam <span class="tempo_restante"><%=segundos_restantes%></span> segundos</small>
         - <a href="#">revogar ordem</a>
       </li>
     <% } %>
